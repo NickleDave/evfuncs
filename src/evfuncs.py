@@ -119,7 +119,7 @@ def load_cbin(filename, channel=0):
         sampling frequency in Hz. Typically 32000.
     """
     # .cbin files are big endian, 16 bit signed int, hence dtype=">i2" below
-    data = np.fromfile(filename,dtype=">i2")
+    data = np.fromfile(filename, dtype=">i2")
     recfile = filename[:-5] + '.rec'
     rec_dict = readrecf(recfile)
     data = data[channel::rec_dict['num_channels']]  # step by number of channels
@@ -127,9 +127,7 @@ def load_cbin(filename, channel=0):
     return data, sample_freq
 
 
-def load_notmat(filename,
-                round_times=True,
-                decimals=3):
+def load_notmat(filename):
     """loads .not.mat files created by evsonganaly (Matlab GUI for labeling song)
 
     Parameters
@@ -153,7 +151,6 @@ def load_notmat(filename,
     else:
         raise ValueError("Filename should have extension .cbin.not.mat or"
                          " .cbin")
-
     return loadmat(filename, squeeze_me=True)
 
 
