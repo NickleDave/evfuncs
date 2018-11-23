@@ -57,7 +57,7 @@ def readrecf(filename):
                 rec_dict['time_after'] = float(line[ind+1:])
             elif "T Before" in line:
                 ind = line.find('=')
-                rec_dict['time before'] = float(line[ind+1:])
+                rec_dict['time_before'] = float(line[ind+1:])
             elif "Output Sound File" in line:
                 ind = line.find('=')
                 rec_dict['outfile'] = line[ind+1:]
