@@ -24,7 +24,7 @@ def readrecf(filename):
     """
 
     rec_dict = {}
-    with open(filename,'r') as recfile:
+    with open(filename, 'r') as recfile:
         line_tmp = ""
         while 1:
             if line_tmp == "":
@@ -52,16 +52,16 @@ def readrecf(filename):
             elif "Samples" in line:
                 ind = line.find('=')
                 rec_dict['num_samples'] = int(line[ind+1:])
-            elif "T After" in line:
+            elif "T After" in line or "T AFTER" in line:
                 ind = line.find('=')
                 rec_dict['time_after'] = float(line[ind+1:])
-            elif "T Before" in line:
+            elif "T Before" in line or "T BEFORE" in line:
                 ind = line.find('=')
                 rec_dict['time_before'] = float(line[ind+1:])
             elif "Output Sound File" in line:
                 ind = line.find('=')
                 rec_dict['outfile'] = line[ind+1:]
-            elif "Thresholds" in line:
+            elif "Thresholds" in line or "THRESHOLDS" in line:
                 th_list = []
                 while 1:
                     line = recfile.readline()
