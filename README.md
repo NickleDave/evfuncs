@@ -27,11 +27,11 @@ Using `evfuncs` with that repository, you can load the `.cbin` audio files ...
 >>> rawsong, samp_freq = evfuncs.load_cbin('gy6or6_baseline_230312_0808.138.cbin')
 ```
 
-... and the annotation in the .not.mat files ...
+... and the annotation in the `.not.mat` files ...
 ```Python
 >>> notmat_dict = evfuncs.load_notmat('gy6or6_baseline_230312_0808.138.cbin')
 ```
-(or, using the .not.mat filename directly)
+(or, using the `.not.mat` filename directly)
 ```Python
 >>> notmat_dict = evfuncs.load_notmat('gy6or6_baseline_230312_0808.138.not.mat')
 ```
@@ -39,12 +39,11 @@ Using `evfuncs` with that repository, you can load the `.cbin` audio files ...
 ...and you should be able to reproduce the segmentation of the raw audio
 into syllables and silent periods.
 ```Python
-
 >>> smooth = evfuncs.smooth_data(rawsong, samp_freq)
->>> min_int = notmat_dict['min_int']
->>> min_dur = notmat_dict['min_dur']
 >>> threshold = notmat_dict['threshold']
->>> onsets, offsets = evfuncs.segment_song(smooth, min_int, min_dur, threshold)
+>>> min_syl_dur = notmat_dict['min_dur'] / 1000
+>>> min_silent_dur = notmat_dict['min_int'] / 1000
+>>> onsets, offsets = evfuncs.segment_song(smooth, samp_freq, threshold, min_syl_dur, min_silent_dur)
 >>> import numpy as np
 >>> np.allclose(onsets, notmat_dict['onsets'])
 True
