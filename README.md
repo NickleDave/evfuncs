@@ -51,8 +51,8 @@ True
 ```
 
 The `evfuncs` functions are used in the 
-['hybrid-vocal-classifier'](https://hybrid-vocal-classifier.readthedocs.io/en/latest/) 
-and ['songdeck'](https://github.com/NickleDave/songdeck) libraries.
+[`hybrid-vocal-classifier`](https://hybrid-vocal-classifier.readthedocs.io/en/latest/) 
+and [`songdeck`](https://github.com/NickleDave/songdeck) libraries.
 
 ### Getting Help
 Please feel free to raise an issue here:  
