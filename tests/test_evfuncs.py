@@ -88,4 +88,12 @@ class TestEvfuncs(unittest.TestCase):
             self.assertTrue(type(filtsong) == np.ndarray)
 
     def test_smooth_data(self):
-        self.assertTrue(False)
+        cbins = glob(os.path.join(self.test_data_dir, '*.cbin'))
+        for cbin in cbins:
+            dat, fs = evfuncs.load_cbin(cbin)
+            smoothed = evfuncs.smooth_data(dat, fs, freq_cutoffs=None)
+            smoothed_500_10k = evfuncs.smooth_data(dat, fs,
+                                                   freq_cutoffs=(500, 10000))
+            self.assertTrue(type(smoothed) == np.ndarray)
+            self.assertTrue(type(smoothed_500_10k) == np.ndarray)
+            self.assertTrue(not np.all(np.equal(smoothed, smoothed_500_10k)))
