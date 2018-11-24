@@ -1,10 +1,10 @@
 # evfuncs
-Functions for working with files created by EvTAF and the evsonganaly GUI.
+Functions for working with files created by EvTAF and the evsonganaly GUI.  
 In case you need to work with those files in Python 😊😊😊 (see "Usage" below).
 
 The first work published with data collected using EvTAF and evsonganaly is in this paper:  
 Tumer, Evren C., and Michael S. Brainard.  
-"Performance variability enables adaptive plasticity of ‘crystallized’adult birdsong."
+"Performance variability enables adaptive plasticity of ‘crystallized’adult birdsong."  
 Nature 450.7173 (2007): 1240.  
 <https://www.nature.com/articles/nature06390>  
 
@@ -20,7 +20,7 @@ The main purpose for developing these functions in Python was to
 work with files of Bengalese finch song in this data repository:  
 <https://figshare.com/articles/Bengalese_Finch_song_repository/4805749>
 
-Using them you can load the `.cbin` audio files ...
+Using `evfuncs` with that repository, you can load the `.cbin` audio files ...
 ```Python
 >>> import evfuncs
 
@@ -37,7 +37,7 @@ Using them you can load the `.cbin` audio files ...
 ```
 
 ...and you should be able to reproduce the segmentation of the raw audio
-into syllables and silent periods
+into syllables and silent periods.
 ```Python
 
 >>> smooth = evfuncs.smooth_data(rawsong, samp_freq)
@@ -51,8 +51,8 @@ True
 ```
 
 The `evfuncs` functions are used in the 
-['hybrid-vocal-classifier']() 
-and ['songdeck']() libraries.
+['hybrid-vocal-classifier'](https://hybrid-vocal-classifier.readthedocs.io/en/latest/) 
+and ['songdeck'](https://github.com/NickleDave/songdeck) libraries.
 
 ### Getting Help
 Please feel free to raise an issue here:  
