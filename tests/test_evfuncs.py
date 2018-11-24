@@ -6,6 +6,7 @@ from glob import glob
 import unittest
 
 import numpy as np
+from scipy.io import loadmat
 
 import evfuncs
 
@@ -80,16 +81,25 @@ class TestEvfuncs(unittest.TestCase):
             self.assertTrue('sm_win' in notmat_dict)
             self.assertTrue(type(notmat_dict['sm_win']) == int)
 
-    def test_bandpass_filtfilt(self):
-        cbins = glob(os.path.join(self.test_data_dir, '*.cbin'))
-        for cbin in cbins:
+    def test_bandpass_filtfilt_works(self):
+        cbins = sorted(glob(os.path.join(self.test_data_dir,
+                                         '*.cbin')))
+        filtsong_mat_files = sorted(glob(os.path.join(self.test_data_dir,
+                                                      '*filtsong*.mat')))
+        for cbin, filtsong_mat_file in zip(cbins, filtsong_mat_files):
             dat, fs = evfuncs.load_cbin(cbin)
             filtsong = evfuncs.bandpass_filtfilt(dat, fs)
             self.assertTrue(type(filtsong) == np.ndarray)
+            filtsong_mat = loadmat(filtsong_mat_file)
+            filtsong_mat = np.squeeze(filtsong_mat['filtsong'])
+            self.assertTrue(np.allclose(filtsong,
+                                        filtsong_mat))
 
     def test_smooth_data(self):
-        cbins = glob(os.path.join(self.test_data_dir, '*.cbin'))
-        for cbin in cbins:
+        cbins = sorted(glob(os.path.join(self.test_data_dir, '*.cbin')))
+        smooth_data_mat_files = sorted(glob(os.path.join(self.test_data_dir,
+                                                         '*smooth_data*.mat')))
+        for cbin, smooth_data_mat_file in zip(cbins, smooth_data_mat_files):
             dat, fs = evfuncs.load_cbin(cbin)
             smoothed = evfuncs.smooth_data(dat, fs, freq_cutoffs=None)
             smoothed_500_10k = evfuncs.smooth_data(dat, fs,
@@ -97,3 +107,7 @@ class TestEvfuncs(unittest.TestCase):
             self.assertTrue(type(smoothed) == np.ndarray)
             self.assertTrue(type(smoothed_500_10k) == np.ndarray)
             self.assertTrue(not np.all(np.equal(smoothed, smoothed_500_10k)))
+            smooth_data_mat = loadmat(smooth_data_mat_file)
+            smooth_data_mat = np.squeeze(smooth_data_mat['sm'])
+            self.assertTrue(np.allclose(smoothed_500_10k,
+                                        smooth_data_mat))
