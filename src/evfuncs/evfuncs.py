@@ -48,7 +48,16 @@ def readrecf(filename):
                 try:
                     rec_dict['sample_freq'] = int(line[ind+1:])
                 except ValueError:
-                    rec_dict['sample_freq'] = float(line[ind+1:])
+                    # if written with scientific notation
+                    # first parse as float, then cast to int
+                    sample_freq_float = float(line[ind+1:])
+                    try:
+                        rec_dict['sample_freq'] = int(sample_freq_float)
+                    except ValueError:
+                        raise ValueError("Couldn't convert following value for "
+                                         "ADFREQ in .rec file {} to an integer: "
+                                         "{}".format(filename,
+                                                     sample_freq_float))
             elif "Samples" in line:
                 ind = line.find('=')
                 rec_dict['num_samples'] = int(line[ind+1:])
@@ -115,7 +124,7 @@ def load_cbin(filename, channel=0):
     data : np.ndarray
         1-d vector of 16-bit signed integers
 
-    sample_freq : int
+    sample_freq : int or float
         sampling frequency in Hz. Typically 32000.
     """
     # .cbin files are big endian, 16 bit signed int, hence dtype=">i2" below

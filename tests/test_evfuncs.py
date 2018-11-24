@@ -52,7 +52,7 @@ class TestEvfuncs(unittest.TestCase):
             dat, fs = evfuncs.load_cbin(cbin)
             self.assertTrue(type(dat) == np.ndarray)
             self.assertTrue(dat.dtype == '>i2')  # should be big-endian 16 bit
-            self.assertTrue(type(fs) == int or type(fs) == float)
+            self.assertTrue(type(fs) == int)
 
     def test_load_notmat(self):
         self.assertTrue(False)
