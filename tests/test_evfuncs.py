@@ -21,7 +21,7 @@ class TestEvfuncs(unittest.TestCase):
         )
 
     def test_readrecf(self):
-        rec_files = glob(os.path.join(self.test_data_dir, '*.rec'))
+        rec_files = sorted(glob(os.path.join(self.test_data_dir, '*.rec')))
         for rec_file in rec_files:
             rec_dict = evfuncs.readrecf(rec_file)
             self.assertTrue('header' in rec_dict)
@@ -48,7 +48,7 @@ class TestEvfuncs(unittest.TestCase):
             self.assertTrue(type(rec_dict['feedback_info']) == dict)
 
     def test_load_cbin(self):
-        cbins = glob(os.path.join(self.test_data_dir, '*.cbin'))
+        cbins = sorted(glob(os.path.join(self.test_data_dir, '*.cbin')))
         for cbin in cbins:
             dat, fs = evfuncs.load_cbin(cbin)
             self.assertTrue(type(dat) == np.ndarray)
@@ -56,7 +56,7 @@ class TestEvfuncs(unittest.TestCase):
             self.assertTrue(type(fs) == int)
 
     def test_load_notmat(self):
-        notmats = glob(os.path.join(self.test_data_dir, '*.not.mat'))
+        notmats = sorted(glob(os.path.join(self.test_data_dir, '*.not.mat')))
         for notmat in notmats:
             notmat_dict = evfuncs.load_notmat(notmat)
             self.assertTrue(type(notmat_dict) is dict)
@@ -111,3 +111,24 @@ class TestEvfuncs(unittest.TestCase):
             smooth_data_mat = np.squeeze(smooth_data_mat['sm'])
             self.assertTrue(np.allclose(smoothed_500_10k,
                                         smooth_data_mat))
+
+    def test_segment_song(self):
+        cbins = sorted(glob(os.path.join(self.test_data_dir, '*.cbin')))
+        notmats = sorted(glob(os.path.join(self.test_data_dir, '*.not.mat')))
+        for cbin, notmat in zip(cbins, notmats):
+            dat, fs = evfuncs.load_cbin(cbin)
+            smooth = evfuncs.smooth_data(dat, fs)
+            nmd = evfuncs.load_notmat(notmat)
+            min_syl_dur = nmd['min_dur'] / 1000
+            min_silent_dur = nmd['min_int'] / 1000
+            threshold = nmd['threshold']
+            onsets, offsets = evfuncs.segment_song(smooth, fs,
+                                                   threshold, min_syl_dur, min_silent_dur)
+            onsets_mat = nmd['onsets'] / 1000  # convert to s
+            offsets_mat = nmd['offsets'] / 1000  # convert to s
+            # by eye, they are equal up to 1000s place
+            # makes sense given this is ms and anything past that is noise
+            atol = 1e-5
+            rtol = 1e-4
+            self.assertTrue(np.allclose(onsets, onsets_mat, rtol, atol))
+            self.assertTrue(np.allclose(offsets, offsets_mat, rtol, atol))

@@ -259,3 +259,88 @@ def smooth_data(rawsong, samp_freq, freq_cutoffs=(500, 10000), smooth_win=2):
     offset = round((smooth.shape[-1] - filtsong.shape[-1]) / 2)
     smooth = smooth[offset:filtsong.shape[-1] + offset]
     return smooth
+
+
+def segment_song(smooth, samp_freq, threshold=5000, min_syl_dur=0.02,
+                 min_silent_dur=0.002, return_Hz=False):
+    """segment audio file of birdsong into syllables
+
+    Parameters
+    ----------
+    smooth : np.ndarray
+        Smoothed audio waveform, returned by evfuncs.smooth_data
+    samp_freq : int
+        Sampling frequency at which audio was recorded. Returned by
+        evfuncs.load_cbin.
+    threshold : int
+        value above which amplitude is considered part of a segment.
+        Default is 5000.
+    min_syl_dur : float
+        minimum duration of a segment.
+        In .not.mat files saved by evsonganaly, this value is called "min_dur"
+        Default is 0.02, i.e. 20 ms.
+    min_silent_dur : float
+        minimum duration of silent gap between segment.
+        In .not.mat files saved by evsonganaly, this value is called "min_int"
+        Default is 0.002, i.e. 2 ms.
+    return_Hz : bool
+        if True, returns the onsets and offsets in units of Hz.
+        Default is False.
+
+    Returns
+    -------
+    onsets_s : np.ndarray
+        Onset times of syllables in song, in seconds.
+    offsets_s : np.ndarray
+        Offset times of syllables in song, in seconds.
+    onsets_Hz : np.ndarray
+        Onset times of syllables in song, in seconds.
+        Only returned if "return_Hz" is True.
+    offsets_Hz : np.ndarray
+        Offset times of syllables in song, in seconds.
+        Only returned if "return_Hz" is True.
+
+    Equivalent to SegmentNotes.m function that is part of evsonganaly GUI.
+    """
+    above_th = smooth > threshold
+    h = [1, -1]
+    # convolving with h causes:
+    # +1 whenever above_th changes from 0 to 1
+    # and -1 whenever above_th changes from 1 to 0
+    above_th_convoluted = np.convolve(h, above_th)
+
+    # always get in units of Hz first, then convert to s
+    onsets_Hz = np.where(above_th_convoluted > 0)[0]
+    offsets_Hz = np.where(above_th_convoluted < 0)[0]
+    onsets_s = onsets_Hz / samp_freq
+    offsets_s = offsets_Hz / samp_freq
+
+    if onsets_s.shape[0] < 1 or offsets_s.shape[0] < 1:
+        return None, None  # because no onsets or offsets in this file
+
+    # get rid of silent intervals that are shorter than min_silent_dur
+    silent_gap_durs = onsets_s[1:] - offsets_s[:-1]  # duration of silent gaps
+    keep_these = np.nonzero(silent_gap_durs > min_silent_dur)
+    onsets_s = np.concatenate(
+        (onsets_s[0, np.newaxis], onsets_s[1:][keep_these]))
+    offsets_s = np.concatenate(
+        (offsets_s[:-1][keep_these], offsets_s[-1, np.newaxis]))
+    if return_Hz:
+        onsets_Hz = np.concatenate(
+            (onsets_Hz[0, np.newaxis], onsets_Hz[1:][keep_these]))
+        offsets_Hz = np.concatenate(
+            (offsets_Hz[:-1][keep_these], offsets_Hz[-1, np.newaxis]))
+
+    # eliminate syllables with duration shorter than min_syl_dur
+    syl_durs = offsets_s - onsets_s
+    keep_these = np.nonzero(syl_durs > min_syl_dur)
+    onsets_s = onsets_s[keep_these]
+    offsets_s = offsets_s[keep_these]
+    if return_Hz:
+        onsets_Hz = onsets_Hz[keep_these]
+        offsets_Hz = offsets_Hz[keep_these]
+
+    if return_Hz:
+        return onsets_s, offsets_s, onsets_Hz, offsets_Hz
+    else:
+        return onsets_s, offsets_s
