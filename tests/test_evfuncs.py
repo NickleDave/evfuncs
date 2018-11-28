@@ -115,7 +115,9 @@ class TestEvfuncs(unittest.TestCase):
     def test_segment_song(self):
         cbins = sorted(glob(os.path.join(self.test_data_dir, '*.cbin')))
         notmats = sorted(glob(os.path.join(self.test_data_dir, '*.not.mat')))
-        for cbin, notmat in zip(cbins, notmats):
+        segment_mats = sorted(glob(os.path.join(self.test_data_dir,
+                                                '*unedited_SegmentNotes_output.mat')))
+        for cbin, notmat, segment_mat in zip(cbins, notmats, segment_mats):
             dat, fs = evfuncs.load_cbin(cbin)
             smooth = evfuncs.smooth_data(dat, fs)
             nmd = evfuncs.load_notmat(notmat)
@@ -124,11 +126,16 @@ class TestEvfuncs(unittest.TestCase):
             threshold = nmd['threshold']
             onsets, offsets = evfuncs.segment_song(smooth, fs,
                                                    threshold, min_syl_dur, min_silent_dur)
-            onsets_mat = nmd['onsets'] / 1000  # convert to s
-            offsets_mat = nmd['offsets'] / 1000  # convert to s
-            # by eye, they are equal up to 1000s place
-            # makes sense given this is ms and anything past that is noise
-            atol = 1e-5
-            rtol = 1e-4
+            segment_dict = loadmat(segment_mat, squeeze_me=True)
+            onsets_mat = segment_dict['onsets']
+            offsets_mat = segment_dict['offsets']
+            # set tolerances for numpy.allclose check.
+            # difference np.abs(offsets - offsets_mat) is usually ~0.00003125...
+            # We just don't want error to be larger than a millisecond
+            # By trial and error, I find that these vals for tolerance result in
+            # about that ceiling
+            atol = 0.0005
+            rtol = 0.00001
+            # i.e., 0.0005 + 0.00001 * some_onsets_or_offset_array ~ [0.0005, 0.0005, ...]
             self.assertTrue(np.allclose(onsets, onsets_mat, rtol, atol))
             self.assertTrue(np.allclose(offsets, offsets_mat, rtol, atol))
