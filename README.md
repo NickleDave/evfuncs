@@ -1,4 +1,4 @@
-# evfuncs
+# *ev*funcs
 Functions for working with files created by EvTAF and the evsonganaly GUI.  
 In case you need to work with those files in Python 😊😊😊 (see "Usage" below).
 
@@ -36,8 +36,10 @@ Using `evfuncs` with that repository, you can load the `.cbin` audio files ...
 >>> notmat_dict = evfuncs.load_notmat('gy6or6_baseline_230312_0808.138.not.mat')
 ```
 
-...and you should be able to reproduce the segmentation of the raw audio
-into syllables and silent periods.
+...and you should be able to reproduce the segmentation of the raw audio files of birdsong
+into syllables and silent periods, using the segmenting parameters from a .not.mat file and 
+the simple algorithm applied by the SegmentNotes.m function.
+
 ```Python
 >>> smooth = evfuncs.smooth_data(rawsong, samp_freq)
 >>> threshold = notmat_dict['threshold']
@@ -48,6 +50,9 @@ into syllables and silent periods.
 >>> np.allclose(onsets, notmat_dict['onsets'])
 True
 ```
+(*Note that this test would return `False` if the onsets and offsets in the .not.mat 
+annotation file had been modified, e.g., a user of the evsonganaly GUI had edited them,
+after they were originally computed by the SegmentNotes.m function.*)
 
 The `evfuncs` functions are used in the 
 [`hybrid-vocal-classifier`](https://hybrid-vocal-classifier.readthedocs.io/en/latest/) 
