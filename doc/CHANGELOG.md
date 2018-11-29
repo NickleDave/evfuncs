@@ -3,6 +3,10 @@ All notable changes to this project will be documented in this file.
 
 This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## 0.1.1a3
+- actually add a changelog
+- make a DOI
+
 ## 0.1.1a2
 - Add evfuncs.segment_notes function and tests for it
 - Add Matlab script `make_oracle_data_for_tests.m` that generates "oracle" data from 

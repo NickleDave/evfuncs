@@ -66,3 +66,4 @@ https://github.com/NickleDave/evfuncs/issues
 [BSD License](./LICENSE).
 
 [![Build Status](https://travis-ci.com/NickleDave/evfuncs.svg?branch=master)](https://travis-ci.com/NickleDave/evfuncs)
+[![DOI](https://zenodo.org/badge/158776329.svg)](https://zenodo.org/badge/latestdoi/158776329)
