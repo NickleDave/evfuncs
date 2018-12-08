@@ -9,7 +9,8 @@ Nature 450.7173 (2007): 1240.
 <https://www.nature.com/articles/nature06390>  
 
 These functions are translations to Python of the original functions 
-written in MATLAB (copyright Mathworks) by Evren Tumer.
+written in MATLAB (copyright Mathworks) by Evren Tumer.  
+![Picture of Evren](./doc/ev_ev_ev.png)
 
 ### Installation
 `$ pip install evfuncs`
