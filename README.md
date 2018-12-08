@@ -20,7 +20,7 @@ written in MATLAB (copyright Mathworks) by Evren Tumer (shown below).
 ### Usage
 
 The main purpose for developing these functions in Python was to 
-work with files of Bengalese finch song in this data repository:  
+work with files of Bengalese finch song in this data repository: 
 <https://figshare.com/articles/Bengalese_Finch_song_repository/4805749>
 
 Using `evfuncs` with that repository, you can load the `.cbin` audio files ...
@@ -69,7 +69,7 @@ https://github.com/NickleDave/evfuncs/issues
 [BSD License](./LICENSE).
 
 ### Citation
-If you use this package, please cite the DOI:
+If you use this package, please cite the DOI:  
 [![DOI](https://zenodo.org/badge/158776329.svg)](https://zenodo.org/badge/latestdoi/158776329)
 
 ### Build Status
