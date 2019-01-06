@@ -5,7 +5,7 @@ language: python
 matrix:
   include:
     - python: "3.6"
-      env: DEPS="numpy scipy"
+      env: DEPS="numpy scipy>=1.2.0"
 
 before_install:
   - sudo apt-get update
