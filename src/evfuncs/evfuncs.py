@@ -188,8 +188,18 @@ def load_notmat(filename):
     notmat_dict : dict
         variables from .not.mat files
 
-    Basically a wrapper around scipy.io.loadmat. Calls loadmat with squeeze_me=True
-    to remove extra dimensions from arrays that loadmat parser sometimes adds.
+    Examples
+    --------
+    >>> a_notmat = 'gy6or6_baseline_230312_0808.138.cbin.not.mat'
+    >>> notmat_dict = load_notmat(a_notmat)
+    >>> notmat_dict.keys()
+    dict_keys(['__header__', '__version__', '__globals__', 'Fs', 'fname', 'labels',
+    'onsets', 'offsets', 'min_int', 'min_dur', 'threshold', 'sm_win'])
+
+    Notes
+    -----
+    Basically a wrapper around `scipy.io.loadmat`. Calls `loadmat` with `squeeze_me=True`
+    to remove extra dimensions from arrays that `loadmat` parser sometimes adds.
     """
     if ".not.mat" in filename:
         pass
