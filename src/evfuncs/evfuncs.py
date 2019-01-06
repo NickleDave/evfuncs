@@ -154,11 +154,17 @@ def load_cbin(filename, channel=0):
 
     Returns
     -------
-    data : np.ndarray
+    data : numpy.ndarray
         1-d vector of 16-bit signed integers
-
     sample_freq : int or float
         sampling frequency in Hz. Typically 32000.
+
+    Examples
+    --------
+    >>> cbin_filename = 'gy6or6_baseline_230312_0808.138.cbin'
+    >>> data, sample_freq = load_cbin(cbin_filename)
+    >>> data
+    array([-230, -223, -235, ...,   34,   36,   26], dtype=int16)
     """
     # .cbin files are big endian, 16 bit signed int, hence dtype=">i2" below
     data = np.fromfile(filename, dtype=">i2")
