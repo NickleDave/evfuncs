@@ -22,7 +22,6 @@ def readrecf(filename):
     -------
     rec_dict : dict
     """
-
     rec_dict = {}
     with open(filename, 'r') as recfile:
         line_tmp = ""
@@ -152,7 +151,6 @@ def load_notmat(filename):
     Basically a wrapper around scipy.io.loadmat. Calls loadmat with squeeze_me=True
     to remove extra dimensions from arrays that loadmat parser sometimes adds.
     """
-
     if ".not.mat" in filename:
         pass
     elif filename[-4:] == "cbin":
@@ -245,7 +243,6 @@ def smooth_data(rawsong, samp_freq, freq_cutoffs=(500, 10000), smooth_win=2):
     This is a very literal translation from the Matlab function SmoothData.m
     by Evren Tumer. Uses the Thomas-Santana algorithm.
     """
-
     if freq_cutoffs is None:
         # then don't do bandpass_filtfilt
         filtsong = rawsong
