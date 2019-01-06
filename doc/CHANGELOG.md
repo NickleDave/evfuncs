@@ -2,6 +2,14 @@
 All notable changes to this project will be documented in this file.
 
 This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+## 0.1.1
+- First real production version (now that I kind of mostly understand semantic versioning)
+### Added
+- Examples sections to most function docstrings
+
+### Changed
+- setup.py requires scipy>=1.2.0, fixes FutureWarnings raised by scipy.signal 
+  (used in `evfuncs.bandpass_filtfilt`)
 
 ## 0.1.1a3
 ### Added
