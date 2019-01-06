@@ -27,7 +27,7 @@ VERSION = '0.1.1a3'
 LICENSE = 'BSD'
 
 REQUIRED = [
-    'numpy', 'scipy',
+    'numpy', 'scipy>=1.2.0',
 ]
 
 # this is here so that the .travis.yml script can install
