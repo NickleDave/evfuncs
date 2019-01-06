@@ -21,6 +21,40 @@ def readrecf(filename):
     Returns
     -------
     rec_dict : dict
+        with following key, value pairs
+            header : str
+                header from .rec file
+            time_before : float
+                time in seconds of additional audio added to file by EvTAF
+                from before sound amplitude went above threshold for recording
+            time_after : float
+                time in seconds of additional audio added to file by EvTAF
+                after sound amplitude dropped below threshold for recording
+            iscatch : bool
+                list of whether each occurrence of auditory feedback triggered
+                was a 'catch trial' (where feedback would have been triggered but
+                was withheld so behavior on that trial could be measured)
+            num_channels : int
+                number of channels from DAQ board recored by EvTAF
+            sample_freq : int
+                sampling frequency of audio file associated with this .rec file, in Hertz
+            num_samples : int
+                number of audio samples in file
+            outfile : str
+                name of audio file played as auditory feedback (if there was any)
+            thresholds : int
+                thresholds used by ring counter to determine whether to trigger auditory feedback
+            feedback_info : dict
+                maps feedback type to time it occurred in milliseconds
+
+    Examples
+    --------
+    >>> recf = 'gy6or6_baseline_230312_0808.138.rec'
+    >>> rec_dict = readrecf(recf)
+    >>> num_samples = rec_dict['num_samples'}
+    >>> sample_freq = rec_dict['sample_freq'}
+    >>> print(f"file duration in seconds: {num_samples / sample_freq:.3f}")
+    file duration in seconds: 12.305
     """
     rec_dict = {}
     with open(filename, 'r') as recfile:
