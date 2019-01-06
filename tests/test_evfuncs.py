@@ -139,3 +139,7 @@ class TestEvfuncs(unittest.TestCase):
             # i.e., 0.0005 + 0.00001 * some_onsets_or_offset_array ~ [0.0005, 0.0005, ...]
             self.assertTrue(np.allclose(onsets, onsets_mat, rtol, atol))
             self.assertTrue(np.allclose(offsets, offsets_mat, rtol, atol))
+
+
+if __name__ == '__main__':
+    unittest.main()
