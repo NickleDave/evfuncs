@@ -2,6 +2,11 @@
 All notable changes to this project will be documented in this file.
 
 This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+## 0.2.1
+### Fixed
+- change `__init__.py` to import metadata from `__about__.py`, so that version 
+is actually single-sourced (both __init__ and setup get it from same place)
+
 ## 0.2.0
 ### Added
 - `__about__.py` file, to single-source version info and other metadata
