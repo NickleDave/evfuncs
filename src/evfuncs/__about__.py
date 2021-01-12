@@ -35,4 +35,4 @@ __author__ = "David Nicholson"
 __email__ = "nicholdav@gmail.com"
 
 __license__ = "BSD"
-__copyright__ = "2019 %s" % __author__
+__copyright__ = "2018-present %s" % __author__
