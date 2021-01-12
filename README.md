@@ -57,9 +57,13 @@ True
 annotation file had been modified, e.g., a user of the evsonganaly GUI had edited them,
 after they were originally computed by the SegmentNotes.m function.*)
 
-The `evfuncs` functions are used in the 
-[`hybrid-vocal-classifier`](https://hybrid-vocal-classifier.readthedocs.io/en/latest/) 
-and [`songdeck`](https://github.com/NickleDave/songdeck) libraries.
+`evfuncs` is used to load annotations by  
+['crowsetta'](https://github.com/NickleDave/crowsetta), 
+a data-munging tool for building datasets of vocalizations 
+that can be used to train machine learning models.
+Two machine learning libraries that can use those datasets are: 
+[`hybrid-vocal-classifier`](https://hybrid-vocal-classifier.readthedocs.io/en/latest/), 
+and [`vak`](https://github.com/NickleDave/vak).
 
 ### Getting Help
 Please feel free to raise an issue here:  
