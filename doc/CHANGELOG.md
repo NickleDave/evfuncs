@@ -3,7 +3,7 @@ All notable changes to this project will be documented in this file.
 
 This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## Unreleased
+## 0.3.0
 ### Changed
 - make it so that functions accept filenames as either string or `pathlib.Path`s
   [bd3494c](https://github.com/NickleDave/evfuncs/commit/bd3494c58bb32ce37b3cecc90d87469c075dca37)
