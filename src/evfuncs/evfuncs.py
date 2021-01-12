@@ -206,6 +206,11 @@ def load_notmat(filename):
     -----
     Basically a wrapper around `scipy.io.loadmat`. Calls `loadmat` with `squeeze_me=True`
     to remove extra dimensions from arrays that `loadmat` parser sometimes adds.
+
+    Also note that **onsets and offsets from .not.mat files are in milliseconds**.
+    The GUI `evsonganaly` saves onsets and offsets in these units,
+    and we avoid converting them here for consistency and interoperability
+    with Matlab code.
     """
     filename = Path(filename)
 
