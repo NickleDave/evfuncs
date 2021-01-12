@@ -1,3 +1,7 @@
+[![Build Status](https://travis-ci.com/NickleDave/evfuncs.svg?branch=master)](https://travis-ci.com/NickleDave/evfuncs)
+[![DOI](https://zenodo.org/badge/158776329.svg)](https://zenodo.org/badge/latestdoi/158776329)
+[![PyPI version](https://badge.fury.io/py/evfuncs.svg)](https://badge.fury.io/py/evfuncs)
+[![License](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)
 # *ev*funcs
 Functions for working with files created by EvTAF and the evsonganaly GUI.  
 In case you need to work with those files in Python 😊😊😊 (see "Usage" below).
