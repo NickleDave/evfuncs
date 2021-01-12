@@ -2,6 +2,8 @@
 ev_funcs
 Python implementations of functions used with EvTAF and evsonganaly.m
 """
+from pathlib import Path
+
 import numpy as np
 from scipy.io import loadmat
 import scipy.signal
@@ -15,8 +17,8 @@ def readrecf(filename):
 
     Parameters
     ----------
-    filename : str
-        Name of .rec file
+    filename : str, Path
+        name of .rec file, can include path
 
     Returns
     -------
@@ -56,8 +58,10 @@ def readrecf(filename):
     >>> print(f"file duration in seconds: {num_samples / sample_freq:.3f}")
     file duration in seconds: 12.305
     """
+    filename = Path(filename)
+
     rec_dict = {}
-    with open(filename, 'r') as recfile:
+    with filename.open('r') as recfile:
         line_tmp = ""
         while 1:
             if line_tmp == "":
@@ -148,7 +152,7 @@ def load_cbin(filename, channel=0):
     Parameters
     ----------
     filename : str
-        name of .cbin file
+        name of .cbin file, can include path
     channel : int
         Channel in file to load. Default is 0.
 
@@ -166,9 +170,11 @@ def load_cbin(filename, channel=0):
     >>> data
     array([-230, -223, -235, ...,   34,   36,   26], dtype=int16)
     """
+    filename = Path(filename)
+
     # .cbin files are big endian, 16 bit signed int, hence dtype=">i2" below
     data = np.fromfile(filename, dtype=">i2")
-    recfile = filename[:-5] + '.rec'
+    recfile = filename.parent.joinpath(filename.stem + '.rec')
     rec_dict = readrecf(recfile)
     data = data[channel::rec_dict['num_channels']]  # step by number of channels
     sample_freq = rec_dict['sample_freq']
@@ -181,7 +187,7 @@ def load_notmat(filename):
     Parameters
     ----------
     filename : str
-        name of .not.mat file
+        name of .not.mat file, can include path
 
     Returns
     -------
@@ -201,13 +207,17 @@ def load_notmat(filename):
     Basically a wrapper around `scipy.io.loadmat`. Calls `loadmat` with `squeeze_me=True`
     to remove extra dimensions from arrays that `loadmat` parser sometimes adds.
     """
-    if ".not.mat" in filename:
+    filename = Path(filename)
+
+    # have to cast to str and call endswith because 'ext' from Path will just be .mat
+    if str(filename).endswith(".not.mat"):
         pass
-    elif filename[-4:] == "cbin":
-            filename += ".not.mat"
+    elif str(filename).endswith("cbin"):
+        filename = filename.parent.joinpath(filename.name + ".not.mat")
     else:
-        raise ValueError("Filename should have extension .cbin.not.mat or"
-                         " .cbin")
+        raise ValueError(
+            f"Filename should have extension .cbin.not.mat or .cbin but extension was: {ext}"
+        )
     return loadmat(filename, squeeze_me=True)
 
 
