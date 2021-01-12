@@ -2,6 +2,12 @@
 All notable changes to this project will be documented in this file.
 
 This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+## Unreleased
+### Changed
+- make it so that functions accept filenames as either string or `pathlib.Path`s
+  [bd3494c](https://github.com/NickleDave/evfuncs/commit/bd3494c58bb32ce37b3cecc90d87469c075dca37)
+
 ## 0.2.1
 ### Fixed
 - change `__init__.py` to import metadata from `__about__.py`, so that version 
@@ -20,7 +26,7 @@ is actually single-sourced (both __init__ and setup get it from same place)
 ## 0.1.1
 - First real production version (now that I kind of mostly understand semantic versioning)
 ### Added
-- Examples sections to most function docstrings
+- Examples sections to most function docstrhttps://github.com/NickleDave/evfuncs/commit/bd3494c58bb32ce37b3cecc90d87469c075dca37ings
 
 ### Changed
 - setup.py requires scipy>=1.2.0, fixes FutureWarnings raised by scipy.signal 
