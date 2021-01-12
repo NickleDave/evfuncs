@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "evfuncs"
-version = "0.3.0"
+version = "0.3.1"
 description = "Functions for working with files created by the EvTAF program and the evsonganaly GUI"
 authors = ["David Nicholson <nickledave@users.noreply.github.com>"]
 license = "BSD"

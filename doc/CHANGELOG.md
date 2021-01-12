@@ -3,6 +3,11 @@ All notable changes to this project will be documented in this file.
 
 This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## 0.3.1
+### Fixed
+- fix development status within classifiers option of pyproject.toml
+  [e7eee87](https://github.com/NickleDave/evfuncs/commit/e7eee870e3f1dc519acf5e6bd658b3c802a05841)
+
 ## 0.3.0
 ### Changed
 - make it so that functions accept filenames as either string or `pathlib.Path`s
