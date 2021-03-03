@@ -14,8 +14,8 @@ classifiers = [
 ]
 
 [tool.poetry.dependencies]
-python = "^3.6"
-numpy = "^1.19.5"
+python = ">=3.6"
+numpy = ">=1.18.1"
 scipy = ">=1.2.0"
 
 [tool.poetry.dev-dependencies]
