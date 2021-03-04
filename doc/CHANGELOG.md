@@ -3,6 +3,15 @@ All notable changes to this project will be documented in this file.
 
 This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## 0.3.2
+### Changed
+- switch to using GitHub Actions for continuous integration
+  [62c1b89](https://github.com/NickleDave/evfuncs/commit/62c1b89a5bbcf12ac8c6929c79e46a9e966d7d47)
+
+### Fixed
+- change dependencies and required Python so they are not pinned to major version
+  [65480ac](https://github.com/NickleDave/evfuncs/commit/65480ac3c50df6533284f57933134d9e34277086)
+
 ## 0.3.1
 ### Fixed
 - fix development status within classifiers option of pyproject.toml
