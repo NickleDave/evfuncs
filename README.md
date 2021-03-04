@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.com/NickleDave/evfuncs.svg?branch=master)](https://travis-ci.com/NickleDave/evfuncs)
+[![Build Status](https://github.com/NickleDave/evfuncs/actions/workflows/ci.yml/badge.svg)
 [![DOI](https://zenodo.org/badge/158776329.svg)](https://zenodo.org/badge/latestdoi/158776329)
 [![PyPI version](https://badge.fury.io/py/evfuncs.svg)](https://badge.fury.io/py/evfuncs)
 [![License](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)
