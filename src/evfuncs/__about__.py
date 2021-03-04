@@ -23,7 +23,7 @@ __title__ = "evfuncs"
 __summary__ = "Functions for working with files created by the EvTAF program and the evsonganaly GUI"
 __uri__ = "https://github.com/NickleDave/evfuncs"
 
-__version__ = '0.3.1'
+__version__ = '0.3.2'
 
 if base_dir is not None and os.path.exists(os.path.join(base_dir, ".commit")):
     with open(os.path.join(base_dir, ".commit")) as fp:
