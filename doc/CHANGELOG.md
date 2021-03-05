@@ -3,7 +3,13 @@ All notable changes to this project will be documented in this file.
 
 This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## 0.3.2
+## 0.3.2.post1 -- 2021-03-04
+### Changed
+- add metadata to pyproject.toml so that README is used as "long description" 
+  and appears on PyPI
+  [43c0742](https://github.com/NickleDave/evfuncs/commit/43c07428b8237b81bd0b80c61b5b27950ebb11bc)
+
+## 0.3.2 -- 2021-03-04
 ### Changed
 - switch to using GitHub Actions for continuous integration
   [62c1b89](https://github.com/NickleDave/evfuncs/commit/62c1b89a5bbcf12ac8c6929c79e46a9e966d7d47)
