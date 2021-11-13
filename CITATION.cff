@@ -1,0 +1,33 @@
+# This CITATION.cff file was generated with cffinit.
+# Visit https://bit.ly/cffinit to generate yours today!
+
+cff-version: 1.2.0
+title: evfuncs
+message: >-
+  If you use evfuncs, please cite it with these
+  metadata
+type: software
+authors:
+  - given-names: David
+    email: nicholdav@gmail.com
+    family-names: Nicholson
+    orcid: 'https://orcid.org/0000-0002-4261-4719'
+doi: 10.5281/zenodo.4584209
+abstract: >-
+  Functions for working with files created by the
+  EvTAF program and the evsonganaly GUI
+license: BSD-3-Clause
+version: 0.3.2.post1
+commit: 504b4f351f94741f1385739c281ba495766ba7f9
+date-released: '2021-03-04'
+repository-code: 'https://github.com/NickleDave/evfuncs'
+repository: 'https://pypi.org/project/evfuncs/'
+identifiers:
+  - type: doi
+    value: 10.5281/zenodo.4584209
+    description: >-
+      This DOI represents all versions, and will
+      always resolve to the latest one.
+  - type: doi
+    value: 10.5281/zenodo.4584209
+    description: version 0.3.2.post1
