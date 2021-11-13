@@ -77,8 +77,28 @@ https://github.com/NickleDave/evfuncs/issues
 [BSD License](./LICENSE).
 
 ### Citation
-If you use this package, please cite the DOI:  
-[![DOI](https://zenodo.org/badge/158776329.svg)](https://zenodo.org/badge/latestdoi/158776329)
+Please cite this software as shown below.
+To get the most up-to-date, automatically-generated citation, 
+please click "Cite this repository" on the upper right side 
+of the page.
+
+bibtex:  
+```
+@software{Nicholson_evfuncs_2021,
+author = {Nicholson, David},
+doi = {10.5281/zenodo.4584209},
+license = {BSD-3-Clause},
+month = {3},
+title = {{evfuncs}},
+url = {https://github.com/NickleDave/evfuncs},
+version = {0.3.2.post1},
+year = {2021}
+```
+
+APA:  
+```
+Nicholson, D. (2021). evfuncs (Version 0.3.2.post1) [Computer software]. https://doi.org/10.5281/zenodo.4584209
+```
 
 ### Build Status
 [![Build Status](https://travis-ci.com/NickleDave/evfuncs.svg?branch=master)](https://travis-ci.com/NickleDave/evfuncs)
