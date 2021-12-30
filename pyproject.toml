@@ -1,11 +1,21 @@
-[tool.poetry]
+[build-system]
+requires = ["flit_core >=3.2,<4"]
+build-backend = "flit_core.buildapi"
+
+[project]
 name = "evfuncs"
-version = "0.3.2.post1"
 description = "Functions for working with files created by the EvTAF program and the evsonganaly GUI"
-authors = ["David Nicholson <nickledave@users.noreply.github.com>"]
-license = "BSD"
+version = "0.3.2.post1"
+authors = [
+    {name = "David Nicholson", email = "nickledave@users.noreply.github.com"}
+]
+dependencies = [
+    "numpy >=1.18.1",
+    "scipy >=1.2.0",
+]
+requires-python = ">=3.6"
 readme = "README.md"
-repository = "https://github.com/NickleDave/evfuncs"
+license = {file = "LICENSE"}
 classifiers = [
     'License :: OSI Approved :: BSD License',
     'Development Status :: 5 - Production/Stable',
@@ -17,14 +27,10 @@ classifiers = [
     'Programming Language :: Python :: Implementation :: CPython',
 ]
 
-[tool.poetry.dependencies]
-python = ">=3.6"
-numpy = ">=1.18.1"
-scipy = ">=1.2.0"
+[project.optional-dependencies]
+test = [
+    "pytest >=6.2.2"
+]
 
-[tool.poetry.dev-dependencies]
-pytest = ">=6.2.2"
-
-[build-system]
-requires = ["poetry-core>=1.0.0"]
-build-backend = "poetry.core.masonry.api"
+[project.urls]
+Source = "https://github.com/NickleDave/evfuncs"
