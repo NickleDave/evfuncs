@@ -3,7 +3,7 @@ All notable changes to this project will be documented in this file.
 
 This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## Unreleased
+## [0.3.3] -- 2021-12-30
 ### Added
 - added `CITATION.cff` file
   [#11](https://github.com/NickleDave/evfuncs/pull/11)
