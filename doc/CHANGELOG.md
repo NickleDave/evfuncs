@@ -13,6 +13,8 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
   and to not need `poetry` for `conda-forge` recipe, 
   that imposes limits on Python version
   [#12](https://github.com/NickleDave/evfuncs/pull/12)
+- require minimum version of Python to be 3.7 
+  [#13](https://github.com/NickleDave/evfuncs/pull/13)
 
 ## 0.3.2.post1 -- 2021-03-04
 ### Changed
