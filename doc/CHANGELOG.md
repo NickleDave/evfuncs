@@ -3,6 +3,17 @@ All notable changes to this project will be documented in this file.
 
 This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## Unreleased
+### Added
+- added `CITATION.cff` file
+  [#11](https://github.com/NickleDave/evfuncs/pull/11)
+
+### Changed
+- switch to using `flit` for development, to have PEP 621 metadata 
+  and to not need `poetry` for `conda-forge` recipe, 
+  that imposes limits on Python version
+  [#12](https://github.com/NickleDave/evfuncs/pull/12)
+
 ## 0.3.2.post1 -- 2021-03-04
 ### Changed
 - add metadata to pyproject.toml so that README is used as "long description" 
