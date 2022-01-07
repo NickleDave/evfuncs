@@ -19,7 +19,18 @@ written in MATLAB (copyright Mathworks) by Evren Tumer (shown below).
 </p>
 
 ### Installation
-`$ pip install evfuncs`
+#### with `pip`
+
+```console
+$ pip install evfuncs
+```
+
+#### with `conda`
+
+```console
+$ conda install evfuncs -c conda-forge
+```
+
 
 ### Usage
 
