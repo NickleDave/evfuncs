@@ -12,14 +12,14 @@ authors:
     email: nicholdav@gmail.com
     family-names: Nicholson
     orcid: 'https://orcid.org/0000-0002-4261-4719'
-doi: 10.5281/zenodo.4584209
+doi: 10.5281/zenodo.5810988
 abstract: >-
   Functions for working with files created by the
   EvTAF program and the evsonganaly GUI
 license: BSD-3-Clause
-version: 0.3.2.post1
-commit: 504b4f351f94741f1385739c281ba495766ba7f9
-date-released: '2021-03-04'
+version: 0.3.3
+commit: fe3cef3cdc4cb0e47e7bcfd393a89395fe67969c
+date-released: '2021-12-30'
 repository-code: 'https://github.com/NickleDave/evfuncs'
 repository: 'https://pypi.org/project/evfuncs/'
 identifiers:
@@ -29,5 +29,5 @@ identifiers:
       This DOI represents all versions, and will
       always resolve to the latest one.
   - type: doi
-    value: 10.5281/zenodo.4584209
-    description: version 0.3.2.post1
+    value: 10.5281/zenodo.5810988
+    description: version 0.3.3
