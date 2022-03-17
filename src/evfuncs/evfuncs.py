@@ -220,6 +220,7 @@ def load_notmat(filename):
     elif str(filename).endswith("cbin"):
         filename = filename.parent.joinpath(filename.name + ".not.mat")
     else:
+        ext = filename.suffix
         raise ValueError(
             f"Filename should have extension .cbin.not.mat or .cbin but extension was: {ext}"
         )
