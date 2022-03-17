@@ -67,6 +67,31 @@ def test_load_notmat(notmats):
         assert type(notmat_dict['sm_win']) == int
 
 
+def test_load_notmat_single_annotated_segment(notmat_with_single_annotated_segment):
+    notmat_dict = evfuncs.load_notmat(notmat_with_single_annotated_segment)
+    assert type(notmat_dict) is dict
+    assert 'onsets' in notmat_dict
+    assert type(notmat_dict['onsets']) == np.ndarray
+    assert notmat_dict['onsets'].dtype == float
+    assert 'offsets' in notmat_dict
+    assert type(notmat_dict['offsets']) == np.ndarray
+    assert notmat_dict['offsets'].dtype == float
+    assert 'labels' in notmat_dict
+    assert type(notmat_dict['labels']) == str
+    assert 'Fs' in notmat_dict
+    assert type(notmat_dict['Fs']) == int
+    assert 'fname' in notmat_dict
+    assert type(notmat_dict['fname']) == str
+    assert 'min_int' in notmat_dict
+    assert type(notmat_dict['min_int']) == int
+    assert 'min_dur' in notmat_dict
+    assert type(notmat_dict['min_dur']) == int
+    assert 'threshold' in notmat_dict
+    assert type(notmat_dict['threshold']) == int
+    assert 'sm_win' in notmat_dict
+    assert type(notmat_dict['sm_win']) == int
+
+
 def test_bandpass_filtfilt_works(cbins, filtsong_mat_files):
     for cbin, filtsong_mat_file in zip(cbins, filtsong_mat_files):
         dat, fs = evfuncs.load_cbin(cbin)
