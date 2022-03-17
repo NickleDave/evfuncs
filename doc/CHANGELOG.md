@@ -3,7 +3,7 @@ All notable changes to this project will be documented in this file.
 
 This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased]
+## [0.3.4] -- 2022-03-17
 ### Changed
 - change `evfuncs.load_notmat` so that the returned values for 
   `onsets` and `offsets` will always be `numpy.ndarray`, even when 
