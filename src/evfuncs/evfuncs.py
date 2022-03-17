@@ -220,10 +220,17 @@ def load_notmat(filename):
     elif str(filename).endswith("cbin"):
         filename = filename.parent.joinpath(filename.name + ".not.mat")
     else:
+        ext = filename.suffix
         raise ValueError(
             f"Filename should have extension .cbin.not.mat or .cbin but extension was: {ext}"
         )
-    return loadmat(filename, squeeze_me=True)
+    notmat_dict = loadmat(filename, squeeze_me=True)
+    # ensure that onsets and offsets are always arrays, not scalar
+    for key in ('onsets', 'offsets'):
+        if np.isscalar(notmat_dict[key]):  # `squeeze_me` makes them a ``float``, this will be True in that case
+            value = np.array(notmat_dict[key])[np.newaxis]  # ``np.newaxis`` ensures 1-d array with shape (1,)
+            notmat_dict[key] = value
+    return notmat_dict
 
 
 def bandpass_filtfilt(rawsong, samp_freq, freq_cutoffs=(500, 10000)):
