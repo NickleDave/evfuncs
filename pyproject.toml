@@ -34,3 +34,8 @@ test = [
 
 [project.urls]
 Source = "https://github.com/NickleDave/evfuncs"
+
+[tool.flit.sdist]
+exclude = [
+    "tests/data_for_tests"
+]
