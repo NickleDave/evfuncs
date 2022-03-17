@@ -29,3 +29,8 @@ def smooth_data_mat_files(gy6or6_032312_subset_root):
 @pytest.fixture
 def segment_mats(gy6or6_032312_subset_root):
     return sorted(gy6or6_032312_subset_root.glob('*unedited_SegmentNotes_output.mat'))
+
+
+@pytest.fixture
+def notmat_with_single_annotated_segment(data_for_tests_root):
+    return data_for_tests_root / 'or60yw70-song-edited-to-have-single-segment' / 'or60yw70_300912_0725.437.cbin.not.mat'
