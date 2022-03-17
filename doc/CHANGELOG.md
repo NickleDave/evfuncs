@@ -3,6 +3,14 @@ All notable changes to this project will be documented in this file.
 
 This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+### Changed
+- change `evfuncs.load_notmat` so that the returned values for 
+  `onsets` and `offsets` will always be `numpy.ndarray`, even when 
+  the `.not.mat` only has a single annotated segment.
+  [#16](https://github.com/NickleDave/evfuncs/pull/16)
+  Fixes [#14](https://github.com/NickleDave/evfuncs/issues/14)
+
 ## [0.3.3] -- 2021-12-30
 ### Added
 - added `CITATION.cff` file
