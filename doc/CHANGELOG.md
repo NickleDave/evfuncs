@@ -3,7 +3,7 @@ All notable changes to this project will be documented in this file.
 
 This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## Unreleased
+## [0.3.5] -- 2022-05-14
 ### Changed
 - raise minimum required Python to 3.8, 
   to adhere to [NEP-29](https://numpy.org/neps/nep-0029-deprecation_policy.html)
