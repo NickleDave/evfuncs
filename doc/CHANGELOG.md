@@ -3,6 +3,13 @@ All notable changes to this project will be documented in this file.
 
 This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## Unreleased
+### Changed
+- raise minimum required Python to 3.8, 
+  to adhere to [NEP-29](https://numpy.org/neps/nep-0029-deprecation_policy.html)
+  [#18](https://github.com/NickleDave/evfuncs/pull/18).
+  Fixes [#17](https://github.com/NickleDave/evfuncs/issues/17).
+
 ## [0.3.4] -- 2022-03-17
 ### Changed
 - change `evfuncs.load_notmat` so that the returned values for 
