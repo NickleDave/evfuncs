@@ -17,9 +17,9 @@ abstract: >-
   Functions for working with files created by the
   EvTAF program and the evsonganaly GUI
 license: BSD-3-Clause
-version: 0.3.4
-commit: eae5c1f56a023c0d11fe0a71c057d1f5d5840fd1
-date-released: '2022-03-17'
+version: 0.3.5
+commit: b1e6b942c19c3ab13f8aecbeab82a05ab47b2a83
+date-released: '2022-05-14'
 repository-code: 'https://github.com/NickleDave/evfuncs'
 repository: 'https://pypi.org/project/evfuncs/'
 identifiers:
