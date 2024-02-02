@@ -1,3 +1,15 @@
+[![Project Status: Unsupported – The project has reached a stable, usable state but the author(s) have ceased all work on it. A new maintainer may be desired.](https://www.repostatus.org/badges/latest/unsupported.svg)](https://www.repostatus.org/#unsupported)
+
+This project is no longer actively maintained, 
+although the code uses core, stable functions from Python, Numpy, and SciPy, so it is likely to work.  
+If you need to load cbin (audio) files from evsonganaly, 
+there are maintained, updated versions of the functions in this package 
+in the vocalpy library: https://vocalpy.readthedocs.io  
+If you need to load .not.mat (annotation) files from evsonganaly, 
+there are maintained, updated versions of that function in crowsetta: https://crowsetta.readthedocs.io  
+(Note that if you install vocalpy, you will already have crowsetta installed.)
+
+
 [![Build Status](https://github.com/NickleDave/evfuncs/actions/workflows/ci.yml/badge.svg)
 [![DOI](https://zenodo.org/badge/158776329.svg)](https://zenodo.org/badge/latestdoi/158776329)
 [![PyPI version](https://badge.fury.io/py/evfuncs.svg)](https://badge.fury.io/py/evfuncs)
