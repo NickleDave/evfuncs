@@ -5,7 +5,7 @@ build-backend = "flit_core.buildapi"
 [project]
 name = "evfuncs"
 description = "Functions for working with files created by the EvTAF program and the evsonganaly GUI"
-version = "0.3.5"
+version = "0.3.5.post1"
 authors = [
     {name = "David Nicholson", email = "nickledave@users.noreply.github.com"}
 ]
